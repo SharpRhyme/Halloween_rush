@@ -25,7 +25,7 @@ class Tilemap:
         
         return tiles
     
-    def physics_rect_around(self, pos):
+    def physics_rects_around(self, pos):
         rects = []
         for tile in self.tiles_around(pos):
             if tile["type"] in PHYSICS_TILES:

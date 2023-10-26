@@ -31,6 +31,8 @@ class Game:
         self.player = Player(self, (50, 50), (32, 30))
 
         self.tilemap = Tilemap(self)
+        
+        
 
         self.scroll = [0, 0]
         

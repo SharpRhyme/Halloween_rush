@@ -23,6 +23,7 @@ class Game:
             "decor": render_tiles("tiles/decor"),
             "ground": render_tiles("tiles/ground"),
             "bg": render_image("background.png"),
+            "platform": render_image("platform.png"),
             "Player/idle": Animation(render_tiles('skelo-idle'), images_dur=7),
             "Player/jump": Animation(render_tiles("skelo-jump"), images_dur=8)
         }

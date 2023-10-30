@@ -1,6 +1,6 @@
 import pygame
 from renderers.utils import render_image, render_tiles, Animation
-from renderers.entities import PhysicsEntity, Player
+from renderers.entities import PhysicsEntity, Player, Enemy
 from renderers.tilemap import Tilemap
 import sys
 #imports
@@ -25,10 +25,12 @@ class Game:
             "bg": render_image("background.png"),
             "platform": render_tiles("tiles/platform"),
             "Player/idle": Animation(render_tiles('skelo-idle'), images_dur=7),
-            "Player/jump": Animation(render_tiles("skelo-jump"), images_dur=8)
+            "Player/jump": Animation(render_tiles("skelo-jump"), images_dur=8),
+            "ghost/idle": Animation(render_tiles("ghost"), images_dur=7)
         }
         
         self.player = Player(self, (50, 50), (32, 30))
+        self.ghost = Enemy(self, (150, 50), (32, 30))
 
         self.tilemap = Tilemap(self)
         
@@ -50,6 +52,8 @@ class Game:
             
             self.player.update(self.tilemap, (self.move[1] - self.move[0], 0))
             self.player.render(self.display, offset = render_scroll)
+            self.ghost.update(self.tilemap)
+            self.ghost.render(self.display)
 
             
             for event in pygame.event.get():

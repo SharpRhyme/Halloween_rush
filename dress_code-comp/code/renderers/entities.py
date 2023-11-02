@@ -25,21 +25,12 @@ class PhysicsEntity:
     def update(self, tilemap, movement=(0,0)):
         self.collisions = {"up": False, "down": False, "right": False, "left": False}
         
-        
-        self.velocity[1] = min(5, self.velocity[1] + 0.1)
-
-    def render(self, surf, offset=(0, 0)):
-        surf.blit(pygame.transform.flip(self.animation.img(), self.flip, False), (self.pos[0] - offset[0] + self.anim_offset[0], self.pos[1] - offset[1] + self.anim_offset[1]))
-
-class Player(PhysicsEntity):
-    def __init__(self, game, pos, size):
-        super().__init__(game, "Player", pos, size)
-        self.air_time = 0
-
-    def update(self, tilemap, movement=(0, 0)):
-        super().update(tilemap, movement = movement)
-
         frame_movement = (movement[0] + self.velocity[0], movement[1] + self.velocity[1])
+
+        if movement[0] > 0:
+            self.flip = False
+        if movement[0] < 0:
+            self.flip = True
         
         self.pos[0] += frame_movement[0]
         
@@ -68,13 +59,22 @@ class Player(PhysicsEntity):
                     self.collisions["up"] = True
                 self.pos[1] = entity_rect.y
         
-        if movement[0] > 0:
-            self.flip = False
-        if movement[0] < 0:
-            self.flip = True
-
         if self.collisions["down"] or self.collisions["up"]:
             self.velocity[1] = 0
+
+        self.velocity[1] = min(5, self.velocity[1] + 0.1)
+
+    def render(self, surf, offset=(0, 0)):
+        surf.blit(pygame.transform.flip(self.animation.img(), self.flip, False), (self.pos[0] - offset[0] + self.anim_offset[0], self.pos[1] - offset[1] + self.anim_offset[1]))
+
+class Player(PhysicsEntity):
+    def __init__(self, game, pos, size):
+        super().__init__(game, "Player", pos, size)
+        self.air_time = 0
+
+    def update(self, tilemap, movement=(0, 0)):
+        super().update(tilemap, movement = movement)
+
 
         self.animation.update()
 
@@ -97,3 +97,4 @@ class Enemy(PhysicsEntity):
         self.animation.update()
 
         self.set_action("idle")
+    

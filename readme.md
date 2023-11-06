@@ -13,3 +13,4 @@ was to include a skeleton the main character is one.
 
 movemnt:
 the arrow keys and WASD move the skeleton
+![icon](https://github.com/SharpRhyme/Halloween_rush/assets/80585261/db98030d-4c35-46fa-8a7c-11be56c9e257)

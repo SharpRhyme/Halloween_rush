@@ -11,7 +11,7 @@ the aim of the game is to survive as long as possible without
 touching the ghosts or falling off. As the theme of the competition 
 was to include a skeleton the main character is one.
 
-movemnt:
+movement:
 the arrow keys and WASD move the skeleton
 
 

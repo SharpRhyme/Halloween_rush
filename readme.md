@@ -14,4 +14,4 @@ touching the ghosts or falling off. As the theme of the competition
 was to include a skeleton the main character is one.
 
 movement:
-the arrow keys and WASD move the skeleton
+use the arrow keys and WASD + spacebar to move the skeleton
